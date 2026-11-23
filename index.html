@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Los días de la semana – Clase de inglés para niños</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#ffe66d;--bg2:#ff9ff3;--bg3:#74b9ff;--card:#ffffffee;--ink:#2d1b69;--ok:#2ecc71;--bad:#ff6b6b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#3b2a7a;--bg2:#7a2a6e;--bg3:#1f4f8f;--card:#2b2160ee;--ink:#fff7d6}}
+:root[data-theme="dark"]{--bg1:#3b2a7a;--bg2:#7a2a6e;--bg3:#1f4f8f;--card:#2b2160ee;--ink:#fff7d6}
+*{box-sizing:border-box}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;padding:12px;font-family:'Fredoka','Comic Sans MS','Trebuchet MS',sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3),var(--bg1));background-size:300% 300%;animation:bg 14s ease infinite}
+@keyframes bg{50%{background-position:100% 50%}}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@keyframes drip{0%{transform:translateY(0);opacity:1}100%{transform:translateY(48px);opacity:0}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@keyframes bump{50%{transform:scale(1.3)}}
+header{max-width:760px;margin:0 auto;text-align:center;position:relative}
+h1{margin:6px 0;font-size:clamp(1.7rem,7vw,2.8rem);background:linear-gradient(90deg,#ff5e62,#ff9966,#f9d423,#2ecc71,#3498db,#9b59b6);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #fff8)}
+.sub{margin:0 0 8px;font-weight:600}
+.top{display:flex;justify-content:center;gap:10px;align-items:center;margin-bottom:8px}
+.pill{background:#fff;color:#2d1b69;border-radius:999px;padding:6px 16px;font-weight:700;font-size:1.1rem;box-shadow:0 4px 0 #0003}
+.pill.bump{animation:bump .4s}
+#mute{border:0;font:inherit;cursor:pointer}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:760px;margin:0 auto}
+.tab{font:inherit;font-weight:600;font-size:1rem;border:3px solid #fff;border-radius:999px;padding:8px 14px;background:#ffffffcc;color:#2d1b69;cursor:pointer;box-shadow:0 4px 0 #0003}
+.tab.on{background:#ff4fa3;color:#fff;transform:scale(1.07)}
+.panel{display:none;max-width:760px;margin:14px auto;background:var(--card);border-radius:28px;padding:18px;box-shadow:0 10px 30px #0003}
+.panel.on{display:block;animation:pop .4s}
+h2{margin:0 0 6px;font-size:1.5rem}
+.how{margin:0 0 12px;font-size:1.05rem;line-height:1.4}
+.days{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px;margin:14px 0}
+.day{border:0;border-radius:22px;padding:14px 8px;font:inherit;font-size:1.05rem;color:#2d1b69;cursor:pointer;box-shadow:0 6px 0 #0003;transition:transform .15s}
+.day:active{transform:translateY(4px)}
+.day .em{display:block;font-size:2.3rem;animation:bob 2s ease-in-out infinite}
+.day b{display:block;font-size:1.35rem}
+.day.glow{transform:scale(1.1);outline:5px solid #fff}
+.next,.big-btn{font:inherit;font-weight:700;font-size:1.1rem;border:0;border-radius:999px;padding:10px 22px;background:#ff4fa3;color:#fff;cursor:pointer;box-shadow:0 5px 0 #0003}
+.prog{font-weight:600;margin-bottom:6px}
+.q{font-size:1.4rem;font-weight:700;margin:8px 0 14px;text-align:center}
+.speak{font-size:3rem;border:0;background:#ffd93d;border-radius:50%;width:90px;height:90px;cursor:pointer;box-shadow:0 6px 0 #0003;animation:bob 1.6s infinite}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.opt{font:inherit;font-weight:700;font-size:1.25rem;padding:14px 10px;border-radius:18px;border:3px solid #fff;color:#2d1b69;cursor:pointer;box-shadow:0 5px 0 #0003;text-transform:capitalize}
+.opt:disabled{opacity:.55;cursor:default}
+.opt.good{background:var(--ok)!important;color:#fff!important;opacity:1}
+.shake{animation:shake .4s}
+.msg{text-align:center;margin-top:12px;font-size:1.15rem;font-weight:600;min-height:30px}
+.end{text-align:center}.end .big{font-size:4rem;animation:bob 1s infinite}
+.hang{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center}
+.hang .stage{flex:0 0 auto;width:min(300px,92vw);border-radius:24px;overflow:hidden;box-shadow:0 8px 0 #0003,0 0 0 4px #fff}
+.hang svg{width:100%;height:auto;display:block}
+.sway,#pop{transform-box:fill-box;transform-origin:50% 100%}
+.sway{animation:sway 3s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+.spin,#sun,#pd{transform-box:fill-box;transform-origin:50% 50%}
+.spin{animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cloud{animation:drift 9s ease-in-out infinite alternate}.c2{animation-duration:12s}
+@keyframes drift{to{transform:translateX(40px)}}
+.blink{transform-box:fill-box;transform-origin:50% 50%;animation:blink 4s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.dr{animation:drip 1.3s ease-in infinite}.d2{animation-delay:.35s}.d3{animation-delay:.7s}.d4{animation-delay:1s}
+.tear{animation:drip .9s ease-in infinite}.t2{animation-delay:.45s}
+.wave{animation:wv 1s linear infinite}
+@keyframes wv{to{stroke-dashoffset:-18}}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+.stage.win #skyr{animation:hue 3s linear infinite}
+#rbw path{stroke-dasharray:1;stroke-dashoffset:1}
+#rbw.show path{animation:draw 1.1s ease-out forwards}
+#rbw.show path:nth-child(2){animation-delay:.15s}#rbw.show path:nth-child(3){animation-delay:.3s}#rbw.show path:nth-child(4){animation-delay:.45s}#rbw.show path:nth-child(5){animation-delay:.6s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hang .side{flex:1;min-width:230px;text-align:center}
+
+.word{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+.word span{width:32px;height:44px;border-bottom:4px solid currentColor;font-size:1.8rem;font-weight:700;text-align:center}
+.kb{display:grid;grid-template-columns:repeat(auto-fit,minmax(38px,1fr));gap:6px;margin-top:8px}
+.k{font:inherit;font-size:1.1rem;font-weight:700;padding:8px 0;border:0;border-radius:12px;background:#fff;color:#2d1b69;box-shadow:0 3px 0 #0003;cursor:pointer}
+.k:disabled{opacity:.4;cursor:default}.k.hit{background:var(--ok);color:#fff}.k.miss{background:var(--bad);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:520px;margin:12px auto}
+.mc{border:0;background:none;padding:0;aspect-ratio:1/1.1;perspective:600px;cursor:pointer;font:inherit}
+.mc .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mc.flip .in{transform:rotateY(180deg)}
+.bk,.fr{position:absolute;inset:0;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-shadow:0 4px 0 #0003;color:#2d1b69;font-size:.95rem}
+.bk{background:linear-gradient(135deg,#6c5ce7,#fd79a8);font-size:2rem;color:#fff}
+.fr{transform:rotateY(180deg)}.fr span{font-size:1.7rem}.fr b{font-size:.95rem;text-transform:capitalize}
+.mc.ok .fr{outline:4px solid var(--ok)}
+.cf{position:fixed;top:-40px;z-index:99;pointer-events:none;animation:fall linear forwards}
+@media (max-width:420px){.tab{padding:6px 10px;font-size:.9rem}.grid{gap:6px}.fr b{font-size:.8rem}}
+</style></head>
+<body>
+<header>
+<h1>🌈 Los días de la semana 🌈</h1>
+<p class="sub">¡Aprende inglés jugando!</p>
+<div class="top"><span class="pill">⭐ <span id="stars">0</span></span><button class="pill" id="mute" aria-label="Sonido">🔊</button></div>
+</header>
+<nav class="tabs">
+<button class="tab on" data-t="learn">📚 Aprende</button><button class="tab" data-t="hang">🍦 Paleta</button><button class="tab" data-t="quiz">🧠 Quiz</button><button class="tab" data-t="listen">👂 Escucha</button><button class="tab" data-t="tf">✅ V o F</button><button class="tab" data-t="mem">🃏 Memoria</button>
+</nav>
+
+<section class="panel on" id="learn">
+<h2>📚 ¡Conoce los días!</h2>
+<p class="how">Una semana tiene <b>7 días</b>. Toca cada tarjeta y escucha cómo se dice en inglés. Fíjate: en inglés, los días siempre se escriben con <b>letra mayúscula</b> al comienzo. Cuando termines, ¡juega para ganar estrellas! ⭐</p>
+<div style="text-align:center"><button class="big-btn" id="all">▶ Escuchar todos los días</button></div>
+<div class="days" id="days"></div>
+</section>
+
+<section class="panel" id="hang">
+<h2>🍦 ¡Salva la paleta!</h2>
+<p class="how">Adivina el día de la semana en inglés tocando letras. Si te equivocas, ¡la paleta se derrite! Tienes 6 oportunidades.</p>
+<div class="hang">
+<div class="stage"><svg viewBox="0 0 300 280" role="img" aria-label="Una paleta que se derrite bajo el sol"><defs>
+<linearGradient id="skg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fd4ff"/><stop offset="1" stop-color="#fff3b8"/></linearGradient>
+<linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fa2"/><stop offset=".6" stop-color="#ff8e53"/><stop offset="1" stop-color="#ffd166"/></linearGradient></defs>
+<rect id="skyr" width="300" height="280" fill="url(#skg)"/>
+<rect id="heat" width="300" height="280" fill="#ff5e3a" opacity="0"/>
+<g id="rbw" fill="none" stroke-width="9"><path pathLength="1" stroke="#ff6b6b" d="M30 245A120 120 0 0 1 270 245"/><path pathLength="1" stroke="#ffa94d" d="M40 245A110 110 0 0 1 260 245"/><path pathLength="1" stroke="#feca57" d="M50 245A100 100 0 0 1 250 245"/><path pathLength="1" stroke="#51cf66" d="M60 245A90 90 0 0 1 240 245"/><path pathLength="1" stroke="#54a0ff" d="M70 245A80 80 0 0 1 230 245"/></g>
+<g class="cloud"><ellipse cx="60" cy="50" rx="30" ry="13" fill="#fff"/><ellipse cx="82" cy="44" rx="20" ry="12" fill="#fff"/></g>
+<g class="cloud c2"><ellipse cx="60" cy="110" rx="26" ry="11" fill="#fff" opacity=".9"/><ellipse cx="42" cy="115" rx="18" ry="9" fill="#fff" opacity=".9"/></g>
+<g id="sun"><g class="spin"><circle cx="245" cy="55" r="36" fill="none" stroke="#ffd93d" stroke-width="10" stroke-dasharray="6 9" stroke-linecap="round"/></g><circle id="sunc" cx="245" cy="55" r="24" fill="#ffd93d"/><circle cx="236" cy="50" r="3" fill="#7a3e00"/><circle cx="254" cy="50" r="3" fill="#7a3e00"/><path id="sunm" d="M236 62q9 9 18 0" stroke="#7a3e00" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+<rect y="240" width="300" height="40" fill="#ffd9a0"/><rect y="240" width="300" height="6" fill="#ffc078"/>
+<g id="wv" opacity="0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 8"><path class="wave" d="M120 34q-8-8 0-16t0-16"/><path class="wave" d="M150 34q-8-8 0-16t0-16"/><path class="wave" d="M180 34q-8-8 0-16t0-16"/></g>
+<ellipse id="pd" cx="150" cy="248" rx="30" ry="5" fill="#ff6fa3"/>
+<g id="pf" opacity="0"><circle cx="132" cy="246" r="3.5" fill="#2d1b69"/><circle cx="168" cy="246" r="3.5" fill="#2d1b69"/><path d="M142 255q8-6 16 0" stroke="#2d1b69" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
+<g id="pop"><g class="sway">
+<rect x="142" y="195" width="16" height="55" rx="7" fill="#f3c98b"/>
+<rect id="pb" x="105" y="40" width="90" height="170" rx="40" fill="url(#pg)"/>
+<rect id="ps" x="115" y="60" width="9" height="90" rx="4.5" fill="#fff" opacity=".45"/>
+<g id="face"><g class="blink"><circle cx="130" cy="95" r="8" fill="#2d1b69"/><circle cx="170" cy="95" r="8" fill="#2d1b69"/><circle cx="133" cy="92" r="3" fill="#fff"/><circle cx="173" cy="92" r="3" fill="#fff"/></g>
+<ellipse cx="118" cy="112" rx="8" ry="5" fill="#ff3d7f" opacity=".5"/><ellipse cx="182" cy="112" rx="8" ry="5" fill="#ff3d7f" opacity=".5"/>
+<path id="mouth" d="M135 115q15 18 30 0" stroke="#2d1b69" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path id="sweat" d="M190 76q-6 10 0 14q6-4 0-14z" fill="#74b9ff" opacity="0"/>
+<g id="tears" opacity="0"><circle class="tear" cx="128" cy="108" r="4" fill="#4aa8ff"/><circle class="tear t2" cx="172" cy="108" r="4" fill="#4aa8ff"/></g></g>
+</g></g>
+<g id="drops" fill="#ff6fa3" stroke="#fff" stroke-width="1.5"><circle class="dr" cx="102" cy="180" r="5" style="opacity:0"/><circle class="dr d2" cx="198" cy="170" r="4" style="opacity:0"/><circle class="dr d3" cx="100" cy="150" r="3.5" style="opacity:0"/><circle class="dr d4" cx="200" cy="190" r="4.5" style="opacity:0"/></g>
+<g id="fx" font-size="22" text-anchor="middle"></g>
+</svg></div>
+<div class="side"><p id="h-hint" class="how"></p><div class="word" id="h-word"></div></div>
+</div>
+<div class="kb" id="h-kb"></div>
+<div class="msg" id="h-msg"></div>
+</section>
+
+<section class="panel" id="quiz"><h2>🧠 Quiz de los días</h2><p class="how">Elige la respuesta correcta. ¡Si fallas, puedes intentarlo otra vez!</p><div id="quiz-box"></div></section>
+<section class="panel" id="listen"><h2>👂 ¿Qué día escuchas?</h2><p class="how">Toca el parlante, escucha con atención y elige el día en español.</p><div id="listen-box"></div></section>
+<section class="panel" id="tf"><h2>✅ Verdadero o Falso</h2><p class="how">Lee la frase y decide si es verdadera o falsa.</p><div id="tf-box"></div></section>
+
+<section class="panel" id="mem">
+<h2>🃏 Memoria sonora</h2>
+<p class="how">Da vuelta las cartas y encuentra las parejas: el día en inglés 🔊 con el mismo día en español. ¡Escucha bien! Movimientos: <b id="m-moves">0</b></p>
+<div class="grid" id="m-grid"></div><div class="msg" id="m-msg"></div>
+</section>
+
+<script>
+const $=s=>document.querySelector(s);
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const D=[
+{en:'Monday',es:'lunes',e:'🌙',c:'#ff9a9e'},
+{en:'Tuesday',es:'martes',e:'🔥',c:'#fdcb6e'},
+{en:'Wednesday',es:'miércoles',e:'🐫',c:'#55efc4'},
+{en:'Thursday',es:'jueves',e:'⚡',c:'#74b9ff'},
+{en:'Friday',es:'viernes',e:'🎉',c:'#a29bfe'},
+{en:'Saturday',es:'sábado',e:'⚽',c:'#fd79a8'},
+{en:'Sunday',es:'domingo',e:'☀️',c:'#ffeaa7'}];
+let muted=false,stars=0,AC;
+
+/* Sonidos */
+function beep(f,d,t,w){if(muted)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+(w||0);o.type=t||'sine';o.frequency.value=f;g.gain.setValueAtTime(.16,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+d)}catch(e){}}
+const sfx={ok(){[523,659,784].forEach((f,i)=>beep(f,.18,'triangle',i*.1))},bad(){beep(220,.25,'sawtooth');beep(165,.3,'sawtooth',.15)},win(){[523,659,784,1046,1318].forEach((f,i)=>beep(f,.2,'triangle',i*.1))},pop(){beep(700,.08,'square')}};
+
+/* Voz en inglés americano */
+let voice=null;
+function pickVoice(){if(!('speechSynthesis' in window))return;const v=speechSynthesis.getVoices().filter(x=>x.lang.replace('_','-').toLowerCase()==='en-us');voice=v.find(x=>/samantha|google|zira|aria|jenny|female/i.test(x.name))||v[0]||null}
+if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function sayP(t){return new Promise(r=>{if(muted||!('speechSynthesis' in window)){setTimeout(r,800);return}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';if(voice)u.voice=voice;u.rate=.8;u.pitch=1.1;u.onend=u.onerror=()=>r();speechSynthesis.speak(u);setTimeout(r,4000)}catch(e){r()}})}
+const say=t=>{sayP(t)};
+
+function add(n){stars+=n;const s=$('#stars');s.textContent=stars;const p=s.parentElement;p.classList.remove('bump');void p.offsetWidth;p.classList.add('bump')}
+function confetti(){const e=['🎉','⭐','🎈','✨','🍭'];for(let i=0;i<26;i++){const s=document.createElement('span');s.className='cf';s.textContent=e[i%5];s.style.left=Math.random()*100+'vw';s.style.animationDuration=(1.8+Math.random()*1.6)+'s';s.style.fontSize=(18+Math.random()*20)+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),3800)}}
+
+/* Pestañas */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+ document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id===t.dataset.t));
+ stopAll=true;if('speechSynthesis' in window)speechSynthesis.cancel();sfx.pop()});
+$('#mute').onclick=()=>{muted=!muted;$('#mute').textContent=muted?'🔇':'🔊'};
+
+/* Aprende */
+let stopAll=false;
+D.forEach(d=>{const b=document.createElement('button');b.className='day';b.style.background=d.c;b.innerHTML=`<span class="em">${d.e}</span><b>${d.en}</b><span>${d.es}</span><div>🔊</div>`;b.onclick=()=>{say(d.en);b.style.transform='scale(1.08)';setTimeout(()=>b.style.transform='',250)};$('#days').appendChild(b)});
+$('#all').onclick=async function(){
+ const btn=this;if(btn.dataset.run){stopAll=true;if('speechSynthesis' in window)speechSynthesis.cancel();return}
+ btn.dataset.run=1;stopAll=false;btn.textContent='⏹ Parar';
+ const cards=document.querySelectorAll('.day');
+ for(let i=0;i<7&&!stopAll;i++){cards[i].classList.add('glow');await sayP(D[i].en);await new Promise(r=>setTimeout(r,350));cards[i].classList.remove('glow')}
+ cards.forEach(c=>c.classList.remove('glow'));delete btn.dataset.run;btn.textContent='▶ Escuchar todos los días'};
+
+/* Paleta que se derrite */
+const HW=[['MONDAY','Es el primer día de la semana de cole.'],['TUESDAY','Viene justo después del primer día de cole.'],['WEDNESDAY','Está en la mitad de la semana.'],['THURSDAY','Viene justo antes del último día de cole.'],['FRIDAY','¡Es el último día de cole, antes del fin de semana!'],['SATURDAY','Es el primer día del fin de semana.'],['SUNDAY','Es el último día de la semana, ¡día de descanso!']];
+let hq=shuffle([0,1,2,3,4,5,6]),hp=0,hw='',hh='',hmiss=0,hgot=new Set(),hused=new Set(),hdone=false;
+function hStart(){if(hp>=hq.length){hq=shuffle(hq);hp=0}hw=HW[hq[hp]][0];hh=HW[hq[hp]][1];hmiss=0;hgot=new Set();hused=new Set();hdone=false;$('#h-msg').innerHTML='';resetFx();hRender()}
+function hRender(){
+ $('#h-hint').textContent='Pista: '+hh;
+ $('#h-word').innerHTML=[...hw].map(c=>`<span>${hgot.has(c)?c:''}</span>`).join('');
+ const kb=$('#h-kb');kb.innerHTML='';
+ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(L=>{const b=document.createElement('button');b.className='k';b.textContent=L;
+  if(hused.has(L)){b.disabled=true;b.classList.add(hw.includes(L)?'hit':'miss')}
+  if(hdone)b.disabled=true;
+  b.onclick=()=>hPick(L);kb.appendChild(b)});
+ scene()}
+function hPick(L){
+ if(hdone||hused.has(L))return;hused.add(L);
+ if(hw.includes(L)){hgot.add(L);sfx.ok()}else{hmiss++;sfx.bad()}
+ const won=[...hw].every(c=>hgot.has(c));
+ if(won){hdone=true;add(3);sfx.win();confetti()}else if(hmiss>=6){hdone=true}
+ hRender();react(won?'win':hdone?'lose':hw.includes(L)?'hit':'miss');
+ const m=$('#h-msg');
+ if(won){m.innerHTML='<p>¡Lo lograste! 🎉 Escucha cómo se dice.</p><button class="next">Siguiente palabra ➜</button>';setTimeout(()=>say(hw.toLowerCase()),600)}
+ else if(hdone){m.innerHTML='<p>¡Oh no, la paleta se derritió! 🫠 ¡Tú puedes, inténtalo otra vez!</p><button class="next">Intentar de nuevo</button>'}
+ if(hdone)m.querySelector('.next').onclick=()=>{hp++;hStart()}}
+
+/* Escena espectacular de la paleta */
+const NS='http://www.w3.org/2000/svg',SUNC=['#ffd93d','#ffc72c','#ffb02e','#ff9a2e','#ff7a29','#ff5e3a','#ff3b3b'];
+let dance=null,fxTok=0;
+function emo(t,x,y,dx,dy,dur,size){const e=document.createElementNS(NS,'text');e.textContent=t;e.setAttribute('x',x);e.setAttribute('y',y);e.style.fontSize=size+'px';e.style.transformBox='fill-box';e.style.transformOrigin='center';$('#fx').appendChild(e);
+ const a=e.animate([{transform:'translate(0,0) scale(.3)',opacity:1},{transform:`translate(${dx}px,${dy}px) scale(1.2) rotate(${dx*2}deg)`,opacity:1,offset:.6},{transform:`translate(${dx*1.3}px,${dy*1.3}px) scale(.6)`,opacity:0}],{duration:dur,easing:'ease-out'});a.onfinish=()=>e.remove()}
+function burst(x,y,list,n,r){for(let i=0;i<n;i++){const ang=Math.random()*6.283,d=(.4+Math.random()*.6)*r;emo(list[i%list.length],x,y,Math.cos(ang)*d,Math.sin(ang)*d-20,900+Math.random()*700,14+Math.random()*14)}}
+function scene(){
+ const m=hmiss,h=170-25*m,b=$('#pb');
+ b.setAttribute('y',40+25*m);b.setAttribute('height',h);b.setAttribute('rx',Math.min(40,h/2));
+ const s=$('#ps');s.setAttribute('y',60+25*m);s.setAttribute('height',Math.max(0,90-25*m));s.setAttribute('opacity',m>=3?0:.45);
+ const p=$('#pd');p.setAttribute('rx',30+m*13);p.setAttribute('ry',5+m*2.5);
+ const f=$('#face');f.setAttribute('transform',`translate(0 ${25*m})`);f.setAttribute('opacity',m>=5?0:1);
+ $('#mouth').setAttribute('d',m<2?'M135 115q15 18 30 0':m<4?'M135 118q15 -4 30 0':'M135 124q15 -16 30 0');
+ $('#sweat').setAttribute('opacity',m>=2&&m<5?1:0);$('#tears').setAttribute('opacity',m>=4&&m<5?1:0);
+ $('#pf').setAttribute('opacity',m>=6?1:0);
+ $('#drops').querySelectorAll('circle').forEach((c,i)=>c.style.opacity=i<m?1:0);
+ $('#wv').setAttribute('opacity',m>=2?Math.min(1,m*.2):0);
+ $('#heat').setAttribute('opacity',m*.06);
+ $('#sunc').setAttribute('fill',SUNC[m]);
+ $('#sunm').setAttribute('d',m<3?'M236 62q9 9 18 0':'M236 68q9 -8 18 0')}
+function resetFx(){fxTok++;if(dance){dance.cancel();dance=null}$('.stage').classList.remove('win');$('#rbw').classList.remove('show');$('#mouth').setAttribute('fill','none');$('#fx').innerHTML=''}
+function react(t){
+ const pop=$('#pop'),st=$('.stage'),sun=$('#sun'),top=40+25*hmiss;
+ const shake=[{transform:'translateX(0) rotate(0)'},{transform:'translateX(-12px) rotate(-6deg)'},{transform:'translateX(12px) rotate(6deg)'},{transform:'translateX(-8px) rotate(-3deg)'},{transform:'none'}];
+ const pulse=k=>sun.animate([{transform:'scale(1)'},{transform:`scale(${k})`},{transform:'scale(1)'}],{duration:600});
+ if(t==='hit'){
+  pop.animate([{transform:'none'},{transform:'scale(1.15,.8)',offset:.2},{transform:'translateY(-34px) scale(.92,1.12)',offset:.5},{transform:'scale(1.1,.9)',offset:.8},{transform:'none'}],{duration:650,easing:'ease-out'});
+  burst(150,top+30,['✨','⭐','💫'],9,70);$('#sunm').setAttribute('d','M232 60q13 14 26 0');pulse(1.15)}
+ else if(t==='miss'){
+  pop.animate(shake,{duration:500});st.animate([{transform:'translateX(0)'},{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'none'}],{duration:350});pulse(1.3);
+  const d=document.createElementNS(NS,'circle');d.setAttribute('cx',150);d.setAttribute('cy',top+10);d.setAttribute('r',9);d.setAttribute('fill','#ff6fa3');d.setAttribute('stroke','#fff');d.setAttribute('stroke-width','2');$('#fx').appendChild(d);
+  const a=d.animate([{transform:'translateY(0)'},{transform:`translateY(${232-top}px)`}],{duration:700,easing:'cubic-bezier(.5,0,1,.6)'});
+  a.onfinish=()=>{d.remove();burst(150,242,['💧','💦'],7,60);$('#pd').animate([{transform:'scale(1)'},{transform:'scale(1.25,1.4)'},{transform:'scale(1)'}],{duration:450})};
+  burst(235,85,['🔥'],2,25)}
+ else if(t==='win'){
+  const tok=fxTok;st.classList.add('win');$('#rbw').classList.add('show');
+  $('#mouth').setAttribute('d','M130 112q20 34 40 0z');$('#mouth').setAttribute('fill','#c0392b');$('#sunm').setAttribute('d','M232 60q13 14 26 0');
+  const sp=pop.animate([{transform:'rotate(0) scale(1)'},{transform:'rotate(360deg) scale(1.25)'},{transform:'rotate(720deg) scale(1)'}],{duration:900,easing:'ease-in-out'});
+  sp.onfinish=()=>{if(tok===fxTok)dance=pop.animate([{transform:'translateY(0) rotate(0)'},{transform:'translateY(-30px) rotate(-10deg)'},{transform:'translateY(0) rotate(0)'},{transform:'translateY(-30px) rotate(10deg)'},{transform:'translateY(0) rotate(0)'}],{duration:900,iterations:Infinity})};
+  for(let i=0;i<7;i++)setTimeout(()=>{if(tok===fxTok)burst(40+Math.random()*220,40+Math.random()*130,['🎆','✨','⭐','💖','🎉','🍭'],8,90)},i*320)}
+ else if(t==='lose'){
+  pop.animate(shake,{duration:600});pulse(1.4);$('#sunm').setAttribute('d','M230 60q15 16 30 0');burst(150,235,['🫠','💧','😢'],6,70)}}
+
+/* Motor de juegos de opciones */
+function Game(id,items,o){
+ o=o||{};const root=$('#'+id);let i=0,sc=0,tried=false,order=shuffle(items.map((_,k)=>k));
+ const show=()=>{
+  if(i>=order.length){sfx.win();confetti();root.innerHTML=`<div class="end"><div class="big">🏆</div><h2>¡Terminaste este juego!</h2><p>Ganaste ${sc} de ${order.length} estrellas ⭐</p><button class="next">Jugar otra vez</button></div>`;root.querySelector('.next').onclick=()=>{i=0;sc=0;order=shuffle(order);show()};return}
+  const it=items[order[i]];tried=false;
+  root.innerHTML=`<div class="prog">Pregunta ${i+1} de ${order.length}</div><div class="q">${it.p}</div><div class="opts"></div><div class="msg"></div>`;
+  const box=root.querySelector('.opts'),msg=root.querySelector('.msg');
+  const sp=root.querySelector('.speak');
+  if(sp){sp.onclick=()=>say(it.s);setTimeout(()=>{if(root.closest('.panel').classList.contains('on'))say(it.s)},500)}
+  const list=it.o.map((t,k)=>({t,k}));
+  (o.keep?list:shuffle(list)).forEach((x,n)=>{
+   const b=document.createElement('button');b.className='opt';b.textContent=x.t;b.style.background=D[(n+order[i])%7].c;
+   b.onclick=()=>{
+    if(x.k===it.a){
+     sfx.ok();if(!tried){sc++;add(1)}
+     box.querySelectorAll('button').forEach(y=>y.disabled=true);b.classList.add('good');
+     msg.innerHTML=`<p>¡Correcto! 🎉</p><button class="next">${i+1<order.length?'Siguiente ➜':'Ver resultado ➜'}</button>`;
+     if(it.s)setTimeout(()=>say(it.s),350);
+     msg.querySelector('.next').onclick=()=>{i++;show()};
+    }else{
+     sfx.bad();tried=true;b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake');
+     if(!o.keep)b.disabled=true;msg.innerHTML='<p>¡Casi! Inténtalo otra vez 💪</p>'}};
+   box.appendChild(b)})};
+ show()}
+
+Game('quiz-box',[
+ {p:'¿Cómo se dice “lunes” en inglés?',o:['Monday','Sunday','Friday'],a:0,s:'Monday'},
+ {p:'¿Cómo se dice “viernes” en inglés?',o:['Thursday','Friday','Saturday'],a:1,s:'Friday'},
+ {p:'¿Qué significa “Wednesday”?',o:['jueves','martes','miércoles'],a:2,s:'Wednesday'},
+ {p:'¿Qué día viene después de Monday?',o:['Tuesday','Sunday','Thursday'],a:0,s:'Tuesday'},
+ {p:'¿Cómo se dice “domingo” en inglés?',o:['Saturday','Sunday','Tuesday'],a:1,s:'Sunday'},
+ {p:'¿Qué significa “Thursday”?',o:['jueves','sábado','lunes'],a:0,s:'Thursday'},
+ {p:'¿Qué día viene antes de Saturday?',o:['Sunday','Friday','Monday'],a:1,s:'Friday'}]);
+
+Game('listen-box',D.map((d,k)=>({p:'<button class="speak" aria-label="Escuchar">🔊</button><p style="font-size:1.1rem;margin:10px 0 0">Toca el parlante y escucha con atención. ¿Qué día es?</p>',o:[d.es,...shuffle(D.filter((_,j)=>j!==k)).slice(0,2).map(x=>x.es)],a:0,s:d.en})));
+
+Game('tf-box',[
+ {p:'“Monday” significa lunes.',o:['✅ Verdadero','❌ Falso'],a:0,s:'Monday'},
+ {p:'“Friday” significa domingo.',o:['✅ Verdadero','❌ Falso'],a:1,s:'Friday'},
+ {p:'“Saturday” viene después de “Friday”.',o:['✅ Verdadero','❌ Falso'],a:0,s:'Saturday'},
+ {p:'“Thursday” significa martes.',o:['✅ Verdadero','❌ Falso'],a:1,s:'Thursday'},
+ {p:'“Sunday” significa domingo.',o:['✅ Verdadero','❌ Falso'],a:0,s:'Sunday'},
+ {p:'“Wednesday” viene antes de “Tuesday”.',o:['✅ Verdadero','❌ Falso'],a:1,s:'Wednesday'},
+ {p:'La semana tiene 7 días.',o:['✅ Verdadero','❌ Falso'],a:0}],{keep:true});
+
+/* Memoria sonora (4 parejas) */
+let mOpen=[],mLock=false,mDone=0,mMoves=0;
+function mStart(){
+ const pick=shuffle([0,1,2,3,4,5,6]).slice(0,4);
+ const cards=shuffle(pick.flatMap(k=>[{k,t:'en'},{k,t:'es'}]));
+ mOpen=[];mLock=false;mDone=0;mMoves=0;$('#m-msg').innerHTML='';$('#m-moves').textContent=0;
+ const g=$('#m-grid');g.innerHTML='';
+ cards.forEach(c=>{
+  const d=D[c.k],b=document.createElement('button');b.className='mc';
+  b.innerHTML=`<div class="in"><div class="bk">❓</div><div class="fr" style="background:${d.c}">${c.t==='en'?`<span>🔊</span><b>${d.en}</b>`:`<span>${d.e}</span><b>${d.es}</b>`}</div></div>`;
+  b.onclick=()=>{
+   if(mLock||b.classList.contains('flip'))return;
+   b.classList.add('flip');if(c.t==='en')say(d.en);else sfx.pop();
+   mOpen.push({b,c});
+   if(mOpen.length===2){
+    mMoves++;$('#m-moves').textContent=mMoves;const [x,y]=mOpen;mOpen=[];
+    if(x.c.k===y.c.k&&x.c.t!==y.c.t){
+     mDone++;add(1);
+     setTimeout(()=>{x.b.classList.add('ok');y.b.classList.add('ok');sfx.ok();
+      if(mDone===4){sfx.win();confetti();$('#m-msg').innerHTML='<p>¡Encontraste todas las parejas! 🏆</p><button class="next">Jugar otra vez</button>';$('#m-msg .next').onclick=mStart}},500);
+    }else{mLock=true;setTimeout(()=>{x.b.classList.remove('flip');y.b.classList.remove('flip');mLock=false},1000)}}};
+  g.appendChild(b)})}
+
+hStart();mStart();
+</script>
+</body></html>
